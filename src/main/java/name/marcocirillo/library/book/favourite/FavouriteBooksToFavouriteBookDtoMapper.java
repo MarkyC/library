@@ -21,7 +21,7 @@ public class FavouriteBooksToFavouriteBookDtoMapper implements Function<Collecti
     public FavouriteBookDto apply(Collection<FavouriteBook> favouriteBooks) {
         return ImmutableFavouriteBookDto.builder()
                 .books(favouriteBooks.stream()
-                        .map(book -> bookRepository.getById(book.getId()))
+                        .map(book -> bookRepository.getById(book.getBookId()))
                         .map(book -> ImmutableBook.builder()
                                 .title(book.getTitle())
                                 .build())

@@ -36,10 +36,6 @@ public class FavouriteBook {
         this.timesCheckedOut = timesCheckedOut;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
     public UUID getAccountId() {
         return accountId;
     }
