@@ -1,0 +1,1 @@
+docker-compose -p library-services -f docker-compose.local.yml down

@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Seed DB" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="library" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="name.marcocirillo.library.LibraryApplication" />
+    <option name="ACTIVE_PROFILES" value="dev" />
+    <option name="PROGRAM_PARAMETERS" value="seedDb --inputFile=&quot;fakeData.10k.sql&quot;" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

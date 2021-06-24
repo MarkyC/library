@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "app.elasticsearch.url",
+      "type": "java.lang.String",
+      "description": "URL String to use for Elasticsearch. Example: localhost:9200."
+    }
+  ]
+}

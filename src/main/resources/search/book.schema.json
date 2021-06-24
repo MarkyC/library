@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "authorId": {
+      "type": "keyword"
+    },
+    "authorName": {
+      "type": "text"
+    },
+    "bookId": {
+      "type": "keyword"
+    },
+    "categoryId": {
+      "type": "keyword"
+    },
+    "title": {
+      "type": "text"
+    },
+    "isbn": {
+      "type": "text"
+    },
+    "available": {
+      "type": "boolean"
+    },
+    "inventoryLevel": {
+      "type": "integer"
+    }
+  }
+}
