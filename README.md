@@ -165,8 +165,3 @@ Small utilities used by other packages.
 #### web
 
 Handles Spring web configuration, including security (in the `web.security` package).
-
-## TODO
-
-- [ ] swagger
-- [ ] refactor books to be individual items
