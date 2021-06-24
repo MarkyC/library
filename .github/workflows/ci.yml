@@ -1,0 +1,57 @@
+# This workflow will do a clean install of dependencies, build the source code and run tests
+# see: https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    # Service containers to run with `container-job`
+    services:
+      postgres: # https://docs.github.com/en/actions/guides/creating-postgresql-service-containers
+        image: postgres:13.3
+        ports:
+          - "5432:5432" # hostPort:containerPort
+        env:
+          LC_ALL: C.UTF-8
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: library
+          POSTGRES_DB: library
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      elasticsearch:
+        image: elasticsearch:7.13.2
+        ports:
+          - "9200:9200"
+          - "9300:9300"
+        env:
+          xpack.security.enabled: false
+          discovery.type: single-node
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
